@@ -10,6 +10,7 @@ public class NumeroTest {
 	public void test() {
 		Numero numero = new Numero();
 		assertEquals("zero", numero.transforma("0"));
+		assertEquals("um",numero.transforma("1"));
 		
 		
 		
