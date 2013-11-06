@@ -8,12 +8,11 @@ public class NumeroTest {
 
 	@Test
 	public void test() {
+		String[] array = {"zero","um","dois","três","quatro","cinco","seis","sete","oito","nove","dez"};
 		Numero numero = new Numero();
-		assertEquals("zero", numero.transforma("0"));
-		assertEquals("um",numero.transforma("1"));
-		assertEquals("três",numero.transforma("3"));
-		
-		
+		for (int i=0;i<11;i++){
+			assertEquals(array[i],numero.transforma(i+""));
+		}
 		
 	}
 
