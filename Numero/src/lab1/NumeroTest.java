@@ -11,6 +11,7 @@ public class NumeroTest {
 		Numero numero = new Numero();
 		assertEquals("zero", numero.transforma("0"));
 		assertEquals("um",numero.transforma("1"));
+		assertEquals("três",numero.transforma("3"));
 		
 		
 		
