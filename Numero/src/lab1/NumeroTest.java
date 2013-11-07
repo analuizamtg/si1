@@ -7,13 +7,24 @@ import org.junit.Test;
 public class NumeroTest {
 
 	@Test
-	public void test() {
-		String[] array = {"zero","um","dois","três","quatro","cinco","seis","sete","oito","nove","dez"};
+	public void test()  {
+		String[] array = {"zero","um","dois","três","quatro","cinco","seis","sete","oito","nove","dez","onze","doze","treze","quatorze","quinze","dezesseis","dezessete","dezoito","dezenove"};
 		Numero numero = new Numero();
-		for (int i=0;i<11;i++){
-			assertEquals(array[i],numero.transforma(i+""));
+		try{
+			for (int i=0;i<20;i++){
+				assertEquals(array[i],numero.transforma(i+""));
+			} 
+		} catch (Exception e){
+			fail("não deveria ter entrado");
 		}
-		
+
+		try{
+			numero.transforma("");
+		} catch (Exception e){
+			assertEquals("Número inválido", e.getMessage());
+		}
+
+
 	}
 
 }
