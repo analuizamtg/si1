@@ -15,14 +15,25 @@ public class NumeroTest {
 				assertEquals(array[i],numero.transforma(i+""));
 			} 
 		} catch (Exception e){
-			fail("não deveria ter entrado");
+			fail();
 		}
 
 		try{
 			numero.transforma("");
+			fail ("deveria ter lançado exceção!");
 		} catch (Exception e){
 			assertEquals("Número inválido", e.getMessage());
 		}
+		
+		try{
+			numero.transforma("ksdl");
+			numero.transforma("xpto");
+			fail ("tem que lançar exceção!");
+		
+		} catch (Exception e){
+			
+		}
+		
 
 
 	}

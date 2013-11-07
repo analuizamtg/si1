@@ -1,12 +1,20 @@
 package lab1;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Hashtable;
 
 public class Numero {
 
 	public String transforma(String numero)throws Exception{
+		String[] alfabeto = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z","w"};
 		if (numero.equals("")){
 			throw new Exception("Número inválido");
+		}
+		for (int i = 0; i<26;i++){
+			if (numero.contains(alfabeto[i])){
+				throw new Exception ("Número inválido");
+			}
 		}
 		
 		Hashtable<String, String> hash = new Hashtable<String,String>();
@@ -34,6 +42,18 @@ public class Numero {
 		hash.put("18", "dezoito");
 		hash.put("19", "dezenove");
 		return hash.get(numero);
+		
+	}
+	
+	public static void main (String [] args){
+		Numero numero = new Numero();
+		try{
+			for (int i=0;i<20;i++){
+				System.out.println(numero.transforma(i+""));
+			}	
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+		}
 		
 	}
 	
