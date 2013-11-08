@@ -2,13 +2,19 @@ package lab1;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class NumeroTest {
+	Numero numero;
 
+	@Before
+	public void setUp(){
+
+		 numero = new Numero();
+	}
 	@Test
 	public void test()  {
-		Numero numero = new Numero();
 
 		
 
@@ -26,8 +32,10 @@ public class NumeroTest {
 		try{
 			assertEquals("mil e um", numero.transforma("1001"));
 			assertEquals("mil e noventa e nove", numero.transforma("1099"));
-			assertEquals("mil e trezentos e noventa e seis", numero.transforma("1396"));
-
+			assertEquals("mil trezentos e noventa e seis", numero.transforma("1396"));
+			assertEquals("nove mil novecentos e noventa e nove", numero.transforma("9999"));
+			assertEquals("dezessete mil", numero.transforma("17000"));
+			assertEquals("quinze mil e noventa e nove", numero.transforma("15099"));
 		} catch (Exception e){
 			
 		}
@@ -35,7 +43,7 @@ public class NumeroTest {
 	}
 	
 	@Test
-	private void testaSeTemLetra(Numero numero) {
+	public void testaSeTemLetra() {
 		try{
 			numero.transforma("ksdl");
 			numero.transforma("xpto");
@@ -47,7 +55,7 @@ public class NumeroTest {
 	}
 	
 	@Test
-	private void testaAte999(Numero numero) {
+	public void testaAte999() {
 		try{
 			assertEquals("cento e um", numero.transforma("101"));
 			assertEquals("quinhentos e nove", numero.transforma("509"));
@@ -61,7 +69,7 @@ public class NumeroTest {
 		}
 	}
     @Test
-	private void testaEntradaVazia(Numero numero) {
+	public void testaEntradaVazia() {
 		try{
 			numero.transforma("");
 			fail ("deveria ter lançado exceção!");
@@ -71,17 +79,24 @@ public class NumeroTest {
 	}
 	
 	@Test
-	private Numero testaAte20() {
-		String[] array = {"zero","um","dois","três","quatro","cinco","seis","sete","oito","nove","dez","onze","doze","treze","quatorze","quinze","dezesseis","dezessete","dezoito","dezenove"};
-		Numero numero = new Numero();
+	public void testaAte20() {
+		
 		try{
-			for (int i=0;i<20;i++){
-				assertEquals(array[i],numero.transforma(i+""));
-			} 
+			assertEquals("zero", numero.transforma("0"));
+			assertEquals("dois",numero.transforma("2"));
 		} catch (Exception e){
 			fail();
 		}
-		return numero;
+		
 	}
 
+	@Test 
+	public void testaAte100mil(){
+		try{
+			assertEquals("noventa e oito mil e quatrocentos",numero.transforma("98400"));
+		} catch (Exception e){
+		
+		
+	}
+	}
 }

@@ -5,12 +5,23 @@ import static org.junit.Assert.assertEquals;
 import java.util.Hashtable;
 
 public class Numero {
+	 boolean variable = true;
+	 private Hashtable<String, String> hash = new Hashtable<String,String>();
+	
 
 	public String transforma(String numero)throws Exception{
 		
-		
+	
 
 		String[] alfabeto = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z","w"};
+		
+		if (hash.containsKey(numero)){
+			return hash.get(numero);
+		
+		}
+		
+		System.out.println(hash.get(numero));
+		
 		if (numero.equals("")){
 			throw new Exception("Número inválido");
 		}
@@ -21,47 +32,50 @@ public class Numero {
 		}
 		String primeiroNumero = numero.substring(0,1);
 		String resto = numero.substring(1);
+	
 		
 		if (primeiroNumero.equals("0") && !resto.equals("")){
 			return transforma(resto);
+		} else if (resto.equals("")){
+			return "";
 		}
-		
-		Hashtable<String, String> hash = new Hashtable<String,String>();
-		
-		
 		preencheHash(hash);
 		
-		hash.get(numero);
-		
+
 		int tamanho = numero.length();
 		
-		
-		if (hash.containsKey(numero)){
-			return hash.get(numero);
-		} else {
 			if (tamanho==2 ){
 				return hash.get(primeiroNumero + "0") + " e " + hash.get(resto);
 			} else if (tamanho==3){
 				return hash.get(primeiroNumero+ "00") + " e " + transforma(resto);
 			} else if (tamanho==4){
 				if (primeiroNumero.equals("1")){
-					return "mil e " + transforma(resto);
+					
+					if (hash.get(resto)!=null || resto.startsWith("0")){
+						return "mil e " + transforma(resto);
+					} else {
+
+						return "mil " + transforma(resto);}
+				} else {
+					if (hash.get(resto)!=null){
+						return hash.get(primeiroNumero) + " mil e " + transforma(resto);
+					} else {
+						return hash.get(primeiroNumero) + " mil " + transforma(resto);}	
 				}
-			}
-			
-			
-			
-			
-			
-			
-		}
+		  } else if (tamanho==5){
+			  if (primeiroNumero.equals("1")){
+				  primeiroNumero=numero.substring(0,2);
+				  resto = numero.substring(2);
+				  return hash.get(primeiroNumero) + " mil " + transforma(resto);		
+			  }
+			  	return hash.get(primeiroNumero+"0") + " e " +  transforma(resto);
+		  }
 		return "";
+		}
 		
-		
-	}
+	
 
 	private void preencheHash(Hashtable<String, String> hash) {
-		hash.put("0", "zero");
 		hash.put("1", "um");
 		hash.put("2", "dois");
 		hash.put("3", "três");
@@ -106,17 +120,14 @@ public class Numero {
 	public static void main (String [] args){
 		Numero numero = new Numero();
 		try{
-			System.out.println(numero.transforma("1001"));
-			System.out.println(numero.transforma("509"));
+			System.out.println(numero.transforma("1"));
 
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		}
 		
 	}
-	
-	
-	
+
 }
 
 
