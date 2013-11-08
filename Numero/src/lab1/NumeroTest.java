@@ -33,7 +33,15 @@ public class NumeroTest {
 		} catch (Exception e){
 			
 		}
-		
+		try{
+			assertEquals("vinte e um", numero.transforma("21"));
+			assertEquals("vinte e seis", numero.transforma("26"));
+			assertEquals("cinquenta e nove", numero.transforma("59"));
+			assertEquals("oitenta e nove", numero.transforma("89"));
+			assertEquals("noventa e nove", numero.transforma("99"));
+		} catch (Exception e ){
+			fail();
+		}
 
 
 	}

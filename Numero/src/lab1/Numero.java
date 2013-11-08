@@ -7,6 +7,8 @@ import java.util.Hashtable;
 public class Numero {
 
 	public String transforma(String numero)throws Exception{
+		
+
 		String[] alfabeto = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z","w"};
 		if (numero.equals("")){
 			throw new Exception("Número inválido");
@@ -16,11 +18,32 @@ public class Numero {
 				throw new Exception ("Número inválido");
 			}
 		}
+		String primeiroNumero = numero.substring(0,1);
+		String resto = numero.substring(1);
 		
 		Hashtable<String, String> hash = new Hashtable<String,String>();
 		
 		
+		preencheHash(hash);
 		
+		hash.get(numero);
+		
+		
+		if (hash.containsKey(numero)){
+			return hash.get(numero);
+		} else {
+			return hash.get(primeiroNumero + "0") + " e " + hash.get(resto);
+			
+			
+			
+			
+			
+		}
+		
+		
+	}
+
+	private void preencheHash(Hashtable<String, String> hash) {
 		hash.put("0", "zero");
 		hash.put("1", "um");
 		hash.put("2", "dois");
@@ -41,16 +64,21 @@ public class Numero {
 		hash.put("17", "dezessete");
 		hash.put("18", "dezoito");
 		hash.put("19", "dezenove");
-		return hash.get(numero);
-		
+		hash.put("20", "vinte");
+		hash.put("30", "trinta");
+		hash.put("40","quarenta");
+		hash.put("50", "cinquenta");
+		hash.put("60", "sessenta");
+		hash.put("70", "setenta");
+		hash.put("80", "oitenta");
+		hash.put("90", "noventa");
 	}
 	
 	public static void main (String [] args){
 		Numero numero = new Numero();
 		try{
-			for (int i=0;i<20;i++){
-				System.out.println(numero.transforma(i+""));
-			}	
+			System.out.println(numero.transforma("26"));
+			System.out.println(numero.transforma("89"));
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		}
