@@ -42,7 +42,19 @@ public class NumeroTest {
 		} catch (Exception e ){
 			fail();
 		}
+		
+		try{
+			assertEquals("cento e um", numero.transforma("101"));
+			assertEquals("quinhentos e nove", numero.transforma("509"));
+			assertEquals("setecentos e noventa e oito", numero.transforma("798"));
+			assertEquals("novecentos e noventa e nove", numero.transforma("999"));
+			assertEquals("cento e setenta e seis", numero.transforma("176"));
 
+		} catch (Exception e ){
+			fail();
+			
+			
+		}
 
 	}
 
