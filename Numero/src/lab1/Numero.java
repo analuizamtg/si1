@@ -42,7 +42,11 @@ public class Numero {
 			if (tamanho==2 ){
 				return hash.get(primeiroNumero + "0") + " e " + hash.get(resto);
 			} else if (tamanho==3){
-				return hash.get(primeiroNumero+"00") + " e " + transforma(resto);
+				return hash.get(primeiroNumero+ "00") + " e " + transforma(resto);
+			} else if (tamanho==4){
+				if (primeiroNumero.equals("1")){
+					return "mil e " + transforma(resto);
+				}
 			}
 			
 			
@@ -102,13 +106,9 @@ public class Numero {
 	public static void main (String [] args){
 		Numero numero = new Numero();
 		try{
-			System.out.println(numero.transforma("101"));
+			System.out.println(numero.transforma("1001"));
 			System.out.println(numero.transforma("509"));
-			System.out.println(numero.transforma("99"));
-			System.out.println(numero.transforma("10"));
-			System.out.println(numero.transforma("26"));
-			System.out.println(numero.transforma("21"));
-			System.out.println(numero.transforma("0"));
+
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		}

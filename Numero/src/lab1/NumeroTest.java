@@ -52,7 +52,13 @@ public class NumeroTest {
 
 		} catch (Exception e ){
 			fail();
-			
+				
+		}
+		try{
+			assertEquals("mil e um", numero.transforma("1001"));
+			assertEquals("mil e noventa e nove", numero.transforma("1099"));
+			assertEquals("mil e trezentos e noventa e seis", numero.transforma("1396"));
+		} catch (Exception e){
 			
 		}
 
