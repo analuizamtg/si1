@@ -8,31 +8,10 @@ public class NumeroTest {
 
 	@Test
 	public void test()  {
-		String[] array = {"zero","um","dois","três","quatro","cinco","seis","sete","oito","nove","dez","onze","doze","treze","quatorze","quinze","dezesseis","dezessete","dezoito","dezenove"};
 		Numero numero = new Numero();
-		try{
-			for (int i=0;i<20;i++){
-				assertEquals(array[i],numero.transforma(i+""));
-			} 
-		} catch (Exception e){
-			fail();
-		}
 
-		try{
-			numero.transforma("");
-			fail ("deveria ter lançado exceção!");
-		} catch (Exception e){
-			assertEquals("Número inválido", e.getMessage());
-		}
 		
-		try{
-			numero.transforma("ksdl");
-			numero.transforma("xpto");
-			fail ("tem que lançar exceção!");
-		
-		} catch (Exception e){
-			
-		}
+
 		try{
 			assertEquals("vinte e um", numero.transforma("21"));
 			assertEquals("vinte e seis", numero.transforma("26"));
@@ -43,6 +22,32 @@ public class NumeroTest {
 			fail();
 		}
 		
+	
+		try{
+			assertEquals("mil e um", numero.transforma("1001"));
+			assertEquals("mil e noventa e nove", numero.transforma("1099"));
+			assertEquals("mil e trezentos e noventa e seis", numero.transforma("1396"));
+
+		} catch (Exception e){
+			
+		}
+
+	}
+	
+	@Test
+	private void testaSeTemLetra(Numero numero) {
+		try{
+			numero.transforma("ksdl");
+			numero.transforma("xpto");
+			fail ("tem que lançar exceção!");
+		
+		} catch (Exception e){
+			
+		}
+	}
+	
+	@Test
+	private void testaAte999(Numero numero) {
 		try{
 			assertEquals("cento e um", numero.transforma("101"));
 			assertEquals("quinhentos e nove", numero.transforma("509"));
@@ -54,14 +59,29 @@ public class NumeroTest {
 			fail();
 				
 		}
+	}
+    @Test
+	private void testaEntradaVazia(Numero numero) {
 		try{
-			assertEquals("mil e um", numero.transforma("1001"));
-			assertEquals("mil e noventa e nove", numero.transforma("1099"));
-			assertEquals("mil e trezentos e noventa e seis", numero.transforma("1396"));
+			numero.transforma("");
+			fail ("deveria ter lançado exceção!");
 		} catch (Exception e){
-			
+			assertEquals("Número inválido", e.getMessage());
 		}
-
+	}
+	
+	@Test
+	private Numero testaAte20() {
+		String[] array = {"zero","um","dois","três","quatro","cinco","seis","sete","oito","nove","dez","onze","doze","treze","quatorze","quinze","dezesseis","dezessete","dezoito","dezenove"};
+		Numero numero = new Numero();
+		try{
+			for (int i=0;i<20;i++){
+				assertEquals(array[i],numero.transforma(i+""));
+			} 
+		} catch (Exception e){
+			fail();
+		}
+		return numero;
 	}
 
 }
