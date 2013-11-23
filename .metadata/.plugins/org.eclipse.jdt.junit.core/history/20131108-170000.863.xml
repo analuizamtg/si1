@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="NumeroTest" project="Numero" tests="5" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="lab1.NumeroTest" incomplete="true">
-    <testcase name="test" classname="lab1.NumeroTest" incomplete="true"/>
-    <testcase name="testaSeTemLetra" classname="lab1.NumeroTest" incomplete="true"/>
-    <testcase name="testaEntradaVazia" classname="lab1.NumeroTest" incomplete="true"/>
-    <testcase name="testaAte999" classname="lab1.NumeroTest" incomplete="true"/>
-    <testcase name="testaAte20" classname="lab1.NumeroTest" incomplete="true"/>
-  </testsuite>
-</testrun>
