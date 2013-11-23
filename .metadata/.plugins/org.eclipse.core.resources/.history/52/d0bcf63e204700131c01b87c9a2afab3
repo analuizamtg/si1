@@ -1,0 +1,17 @@
+package lab1;
+
+public class Numero {
+
+	public String transforma(String numero){
+		if (numero.equals("0")){
+			return "zero";
+		}else if (numero.equals("1")) {
+			return "um";
+		} 
+	}
+	
+	
+	
+}
+
+
