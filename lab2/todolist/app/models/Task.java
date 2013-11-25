@@ -2,23 +2,41 @@ package models;
 
 import java.util.*;
 
-import play.data.validation.Constraints.Required;
+import play.db.ebean.*;
+import play.data.validation.Constraints.*;
 
-public class Task {
-    
-	public Long id;
+import javax.persistence.*;
 
-	@Required
-	public String label;
+@Entity
+public class Task extends Model {
+
+  @Id
+  public Long id;
+  
+  @Required
+  public String name;
+  
+  public String description;
+  public int priority;
+ 
+  
+  public static Finder<Long,Task> find = new Finder(
+    Long.class, Task.class
+  );
 
   public static List<Task> all() {
-    return new ArrayList<Task>();
-  }
-  
-  public static void create(Task task) {
-  }
-  
-  public static void delete(Long id) {
-  }
-    
+	  return find.all();
+	}
+
+	public static void create(Task task) {
+	  task.save();
+	}
+
+	public static void delete(Long id) {
+	  find.ref(id).delete();
+	}
+	
+	public static void update(Task task){
+		task.update(task);
+	}
 }	
