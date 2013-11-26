@@ -36,6 +36,10 @@ public class Application extends Controller {
 		  return redirect(routes.Application.tasks());
 		}
 	
-	
+	public static Result update(Long id){
+		Task.updateAction(id);
+		return redirect(routes.Application.tasks());
+	}
+		
 
 }

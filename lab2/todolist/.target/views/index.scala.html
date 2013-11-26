@@ -6,18 +6,44 @@
     
     <h1>@tasks.size() tarefa(s)</h1>
     
+    
     <ul>
+    	<b><h2> Resolvidas: </h2></b>
         @for(task <- tasks) {
-            <li>
-                <b>Nome:</b> @task.name;
-                <b>Descrição:</b>  @task.description;
-                <b>Prioridade:</b> @task.priority
-                
-                
+        	@if(task.isChecked()){
+        		
+        		<b>Nome:</b> @task.getName();
+                <br>
+                <b>Descrição:</b>  @task.getDescription();
+                <br>
+                <b>Prioridade:</b> @task.getPriority();
+                 @form(routes.Application.deleteTask(task.id)) {
+                    <input type="submit" value="Deletar">
+                }
+                }
+                }
+                <b><h2> Não resolvidas: </h2></b>
+           @for(task <- tasks) {
+        	 @if(!task.isChecked()){
+        	 
+        	 
+			            <li>
+                <b>Nome:</b> @task.getName();
+                <br>
+                <b>Descrição:</b>  @task.getDescription();
+                <br>
+                <b>Prioridade:</b> @task.getPriority();
+                @form(routes.Application.update(task.id)) {
+                    <input type="submit" value="Marcar como resolvida">
+                }
                 @form(routes.Application.deleteTask(task.id)) {
                     <input type="submit" value="Deletar">
                 }
+               
             </li>
+			
+
+        	}
         }
     </ul>
     
