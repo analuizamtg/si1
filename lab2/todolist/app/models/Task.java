@@ -17,8 +17,9 @@ public class Task extends Model implements Comparable {
   
   @Required
   public String name;
-  
+  @Required
   private String description;
+  @Required
   private int priority;
   private boolean checked;
  

@@ -1,9 +1,10 @@
+
 @(tasks: List[Task], taskForm: Form[Task])
 
 @import helper._
 
 @main("Todo list") {
-    
+ </body>        
     <h1>@tasks.size() tarefa(s)</h1>
     
     
@@ -22,7 +23,9 @@
                 }
                 }
                 }
-                <b><h2> Não resolvidas: </h2></b>
+                
+                
+                <b><h3> Não resolvidas: </h3></b>
            @for(task <- tasks) {
         	 @if(!task.isChecked()){
         	 
@@ -47,6 +50,7 @@
         }
     </ul>
     
+    
     <h2>Adicionar uma nova tarefa</h2>
     
     @form(routes.Application.newTask()) {
@@ -59,4 +63,6 @@
         
     }
     
+
 }
+ </body>
